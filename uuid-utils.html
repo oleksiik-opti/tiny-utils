@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UUID Utils</title>
+
+    <link type="text/css" rel="stylesheet" href="./styles.css"/>
+
+    <style>
+        div.main-area {
+            display: flex;
+            gap: 0.5rem;
+            margin: 1rem;
+        }
+
+        div.main-area input {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            min-width: 20rem;
+        }
+
+        div.main-area input:focus {
+            border-color: #007bff;
+        }
+    </style>
+
+    <script>
+        function generateUUIDv4() {
+            let value = crypto.randomUUID();
+
+            let textarea = document.getElementById("raw-content");
+
+            textarea.value = value;
+        }
+    </script>
+</head>
+
+<body>
+<div class="nav-bar">
+    <a href="index.html" class="nav-button">Back to index...</a>
+</div>
+<div class="main-area">
+    <input type="text" id="raw-content" type="text"/>
+    <button type="button" onclick="generateUUIDv4()">Generate UUID v4</button>
+</div>
+</body>
+
+</html>
