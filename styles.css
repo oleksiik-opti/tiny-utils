@@ -1,0 +1,36 @@
+div.nav-bar {
+    display: flex;
+    align-items: stretch;
+    gap: 0.5rem;
+    margin: 1rem;
+}
+
+a.nav-button {
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
+}
+
+a.nav-button:hover {
+    background-color: #0056b3;
+}
+
+button {
+    padding: 0.5rem 0.75rem;
+    font-size: 1rem;
+    background-color: #007bff;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}

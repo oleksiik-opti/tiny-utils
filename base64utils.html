@@ -6,26 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Base64 Utils</title>
 
+    <link type="text/css" rel="stylesheet" href="./styles.css"/>
+
     <style>
-        body {
+        div.main-area {
             display: flex;
             align-items: stretch;
             gap: 0.5rem;
             margin: 1rem;
         }
 
-        textarea.sensitive-info {
+        div.main-area textarea.sensitive-info {
             color: transparent;
-            text-shadow: 0 0 8px rgba(0,0,0,0.5);
+            text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
         }
 
-        textarea {
+        div.main-area textarea {
             padding: 0.5rem 1rem;
             font-size: 1rem;
             border: 2px solid #ccc;
             border-radius: 8px;
             outline: none;
-            transition: border-color 0.2s;
             flex: 1;
             resize: vertical;
             /* Allows user to resize up/down */
@@ -33,32 +34,15 @@
             /* Set initial height */
         }
 
-        textarea:focus {
+        div.main-area textarea:focus {
             border-color: #007bff;
         }
 
-        div.buttons {
+        div.main-area div.buttons {
             display: flex;
             flex-direction: column;
             gap: 0.5rem;
             justify-content: center;
-            /* Vertically center the buttons */
-        }
-
-        button {
-            padding: 0.5rem 0.75rem;
-            font-size: 1rem;
-            background-color: #007bff;
-            border: none;
-            border-radius: 8px;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.2s;
-            /* Center buttons vertically */
-        }
-
-        button:hover {
-            background-color: #0056b3;
         }
     </style>
 
@@ -91,23 +75,25 @@
 
         function toggleSensitiveInfo() {
             let textAreas = document.getElementsByTagName("textarea");
-            
+
             for (let i = 0; i < textAreas.length; i++) {
                 let textArea = textAreas[i];
 
                 if (textArea.classList.contains("sensitive-info")) {
                     textArea.classList.remove("sensitive-info");
-                }
-                else {
+                } else {
                     textArea.classList.add("sensitive-info");
                 }
             }
-
         }
     </script>
 </head>
 
 <body>
+<div class="nav-bar">
+    <a href="index.html" class="nav-button">Back to index...</a>
+</div>
+<div class="main-area">
     <textarea id="raw-content" type="text"></textarea>
     <div class="buttons">
         <button type="button" onclick="toggleSensitiveInfo()">Toggle Sensitive Info Mode</button>
@@ -115,6 +101,7 @@
         <button type="button" onclick="decode()">&lt;&lt; Decode &lt;&lt;</button>
     </div>
     <textarea id="encoded-content" type="text"></textarea>
+</div>
 </body>
 
 </html>
