@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DateTime Ticks To Date</title>
+
+    <link type="text/css" rel="stylesheet" href="./styles.css"/>
+
+    <style>
+        div.main-area {
+            display: flex;
+            gap: 0.5rem;
+            margin: 1rem;
+        }
+
+        div.main-area input {
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border: 2px solid #ccc;
+            border-radius: 8px;
+            outline: none;
+            min-width: 20rem;
+        }
+
+        div.main-area input:focus {
+            border-color: #007bff;
+        }
+    </style>
+
+    <script>
+        /**
+         * @returns {HTMLInputElement}
+         */
+        function getTicksElement() {
+            return document.getElementById("ticks");
+        }
+
+        /**
+         * @returns {HTMLInputElement}
+         */
+        function getDateElement() {
+            return document.getElementById("date");
+        }
+
+        function convertTicksToDate() {
+            const ticksElement = getTicksElement();
+            const dateElement = getDateElement();
+
+            // Get the ticks value from the input
+            const ticks = parseInt(ticksElement.value, 10);
+
+            // Validate the input
+            if (isNaN(ticks) || ticks < 0) {
+                dateElement.value = "Invalid Ticks";
+                return;
+            }
+
+            // Convert ticks to milliseconds (1 tick = 100 nanoseconds)
+            const milliseconds = ticks / 10000;
+            const epochOffset = 62_135_596_800_000; // Ticks at Unix epoch (1970-01-01T00:00:00Z)
+
+            // Create a new Date object
+            const date = new Date(milliseconds - epochOffset);
+
+            // Format the date as a string
+            dateElement.value = date.toISOString();
+        }
+    </script>
+</head>
+
+<body>
+<div class="nav-bar">
+    <a href="index.html" class="nav-button">Back to index...</a>
+</div>
+<div class="main-area">
+    <input id="ticks" type="text" placeholder="Ticks" onchange="convertTicksToDate()">
+    <p>&gt;&gt;</p>
+    <input id="date" type="text" placeholder="Date" readonly>
+</div>
+</body>
+
+</html>
